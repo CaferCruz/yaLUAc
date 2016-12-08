@@ -26,7 +26,6 @@ number = [0-9]+
 name = [A-Za-z][A-Za-z0-9]*
 string = ["][A-Za-z0-9]*["]
 
-
 %%
 //regras
 <YYINITIAL> {
