@@ -5,6 +5,7 @@
  */
 package yaluac;
 
+
 /**
  *
  * @author cafer
@@ -15,7 +16,7 @@ public class YaLUAc {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
-    
+
 }
