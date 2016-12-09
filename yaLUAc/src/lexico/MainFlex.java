@@ -5,9 +5,11 @@
  */
 package lexico;
 
+import java.io.File;
+
 /**
  *
- * @author cafer
+ * @author Cafer&Carrara
  */
 public class MainFlex {
 
@@ -15,7 +17,14 @@ public class MainFlex {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        String path = "C:/Users/cafer/Documents/yaLUAc/yaLUAc/src/lexico/lexer.flex";
+        generateLexer(path);
+        
     }
-    
+
+    private static void generateLexer(String path) {
+           File file = new File(path);
+           jflex.Main.generate(file);
+    }
 }
