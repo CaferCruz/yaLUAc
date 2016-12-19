@@ -32,6 +32,7 @@ terminal String     t_SEMICOLON,
                     t_IF,
                     t_THEN,
                     t_ELSEIF,
+                    t_ELSE,
                     t_FOR,
                     t_IN,
                     t_FUNCTION, 
@@ -69,8 +70,9 @@ terminal String     t_SEMICOLON,
                     t_NOT,
                     t_HASHTAG,
                     t_STRING,
+                    t_BLANK,
                     t_NAME;
-terminal Integer    t_NUMBER,
+terminal Integer    t_NUMBER;
 
 /* Non terminals */
 non terminal block 
@@ -95,7 +97,7 @@ non terminal block
             ,optparlist 		
             ,parlist 
             ,tableconstructor 				
-            ,fieldlis 						
+            ,fieldlist 						
             ,field
             ,fieldsep
             ,binop					
@@ -107,9 +109,9 @@ non terminal block
 precedence left t_OR;
 precedence left t_AND;
 precedence left t_LESS_THEN, t_GREATER_THEN, t_LESS_EQUAL, t_GREATER_EQUAL,t_NOT_EQUAL, t_EQUAL;
-precedente left t_DOTDOT;
-precedente left t_PLUS, t_MINUS;
-precedente left t_TIMES, t_DEVIDED;
+precedence left t_DOTDOT;
+precedence left t_PLUS, t_MINUS;
+precedence left t_TIMES, t_DEVIDED;
 precedence left t_NOT;
 precedence left t_EXP;
 
@@ -127,13 +129,13 @@ prefixexp ::= var
             | t_PARENTHESE_OPEN exp t_PARENTHESE_CLOSE
             ;
 				
-stat ::= varlist t_DOTDOTDOT explist 
+stat ::= varlist t_ATTRIBUTION explist 
         | functioncall
         | t_DO block t_END 
         | t_WHILE exp t_DO block t_END
         | t_REPEAT  block  t_UNTIL  exp
         | t_IF exp t_THEN block optelse t_END
-        | t_FOR  t_NAME t_DOTDOTDOT exp t_COMMA exp  optforexp  t_DO  block t_END
+        | t_FOR  t_NAME t_ATTRIBUTION exp t_COMMA exp  optforexp  t_DO  block t_END
         | t_FOR namelist  t_IN  explist  t_DO  block t_END
         | t_FUNCTION  funcname funcbody  
         | t_LOCAL t_FUNCTION  t_NAME  funcbody
@@ -147,9 +149,9 @@ optexplist ::= explist
 
 function ::= t_FUNCTION funcbody;
 
-funcname ::= T_NAME 
-            | NAME t_DOT funcname 
-            | NAME t_DOTDOT t_NAME ;
+funcname ::= t_NAME 
+            | t_NAME t_DOT funcname 
+            | t_NAME t_DOTDOT t_NAME ;
 						
 
 optelse	::= t_ELSE  block 						
@@ -166,7 +168,7 @@ varlist ::= var
 explist	::= exp
             | exp t_COMMA explist;
 						
-optasmexplist ::= t_DOTDOTDOT explist
+optasmexplist ::= t_ATTRIBUTION explist
                 | empty;		
 						 		
 namelist ::= t_NAME 
@@ -204,16 +206,16 @@ optparlist ::= parlist
 
 parlist ::= namelist
             | namelist t_COMMA t_DOTDOTDOT
-            | PARAMETROS;	
+            | t_DOTDOTDOT;	
 	
 
 tableconstructor ::= t_BRACERS_OPEN fieldlist t_BRACERS_CLOSE
                     | t_BRACERS_OPEN t_BRACERS_CLOSE; 
  						
-fieldlis ::= field
+fieldlist ::= field
             | field fieldsep fieldlist ;
  										
-field ::= t_BRACKET_OPEN exp t_BRACKET_CLOSE ATTRIBUTION exp
+field ::= t_BRACKET_OPEN exp t_BRACKET_CLOSE t_ATTRIBUTION exp
         | t_NAME t_ATTRIBUTION exp
         | exp ;
 						
