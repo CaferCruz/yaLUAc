@@ -1,0 +1,245 @@
+// CUP specification for a simple expression evaluator (no actions)
+
+import java_cup.runtime.*;
+
+parser code
+{:
+    public static void main(String args[]) throws Exception{
+        //new parser(new Yylex(new FileInputStream(args[0]))).parser();
+        new parser(new Yylex(System.in)).parser();
+    } 
+
+    public void syntax_error(Symbol a){
+        report_error("Error de sintaxe. Linha: " + (s.right + l) + "Coluna: " + s.left + ". Texto: \"" + s.value + "\"", null);
+        //public static void carregar(String arquivo) throws Exception{
+            //new parser(new Yylex(new FileInputStream(arquivo))).parser();
+        //}
+    }
+:};
+
+/* Preliminaries to set up and use the scanner.  */
+init with {: scanner.init();              :};
+scan with {: return scanner.next_token(); :};
+
+/* Terminals (tokens returned by the scanner). */
+terminal String     t_SEMICOLON,
+                    t_ATTRIBUTION, 
+                    t_END,
+                    t_DO,
+                    t_WHILE,
+                    t_REPEAT,
+                    t_UNTIL,
+                    t_IF,
+                    t_THEN,
+                    t_ELSEIF,
+                    t_FOR,
+                    t_IN,
+                    t_FUNCTION, 
+                    t_LOCAL,
+                    t_RETURN,
+                    t_BREAK,
+                    t_DOT,
+                    t_COLON,
+                    t_COMMA,
+                    t_BRACKET_OPEN,
+                    t_BRACKET_CLOSE,
+                    t_NIL,
+                    t_TRUE,
+                    t_FALSE,
+                    t_PARENTHESE_OPEN,
+                    t_PARENTHESE_CLOSE,
+                    t_BRACERS_OPEN,
+                    t_BRACERS_CLOSE,
+                    t_DOTDOTDOT,
+                    t_PLUS,
+                    t_MINUS,
+                    t_TIMES,
+                    t_DEVIDED,
+                    t_EXP,
+                    t_PERCENT,
+                    t_DOTDOT,
+                    t_LESS_THEN,
+                    t_LESS_EQUAL,
+                    t_GREATER_THEN,
+                    t_GREATER_EQUAL,
+                    t_EQUAL,
+                    t_NOT_EQUAL,
+                    t_AND,
+                    t_OR, 
+                    t_NOT,
+                    t_HASHTAG,
+                    t_STRING,
+                    t_NAME;
+terminal Integer    t_NUMBER,
+
+/* Non terminals */
+non terminal block 
+            ,statlist 							
+            ,prefixexp 		
+            ,stat 		
+            ,laststat						
+            ,optexplist 
+            ,function 
+            ,funcname 				
+            ,optelse							
+            ,optforexp 
+            ,varlist 		
+            ,explist					
+            ,optasmexplist 					 		
+            ,namelist 	
+            ,var 			
+            ,exp 
+            ,functioncall 			
+            ,args 
+            ,funcbody 
+            ,optparlist 		
+            ,parlist 
+            ,tableconstructor 				
+            ,fieldlis 						
+            ,field
+            ,fieldsep
+            ,binop					
+            ,unop														
+            ,optsemi
+            ,empty;
+
+/* Precedences */
+precedence left t_OR;
+precedence left t_AND;
+precedence left t_LESS_THEN, t_GREATER_THEN, t_LESS_EQUAL, t_GREATER_EQUAL,t_NOT_EQUAL, t_EQUAL;
+precedente left t_DOTDOT;
+precedente left t_PLUS, t_MINUS;
+precedente left t_TIMES, t_DEVIDED;
+precedence left t_NOT;
+precedence left t_EXP;
+
+
+/* The grammar */
+start with block;
+ 
+block ::= statlist laststat | statlist | laststat | empty;
+
+statlist ::= stat optsemi 
+            | stat optsemi  statlist;
+										
+prefixexp ::= var
+            | functioncall
+            | t_PARENTHESE_OPEN exp t_PARENTHESE_CLOSE
+            ;
+				
+stat ::= varlist t_DOTDOTDOT explist 
+        | functioncall
+        | t_DO block t_END 
+        | t_WHILE exp t_DO block t_END
+        | t_REPEAT  block  t_UNTIL  exp
+        | t_IF exp t_THEN block optelse t_END
+        | t_FOR  t_NAME t_DOTDOTDOT exp t_COMMA exp  optforexp  t_DO  block t_END
+        | t_FOR namelist  t_IN  explist  t_DO  block t_END
+        | t_FUNCTION  funcname funcbody  
+        | t_LOCAL t_FUNCTION  t_NAME  funcbody
+        | t_LOCAL  namelist optasmexplist;
+					
+laststat ::= t_RETURN  optexplist 	
+            | t_BREAK; 						
+
+optexplist ::= explist 
+               | empty ;
+
+function ::= t_FUNCTION funcbody;
+
+funcname ::= T_NAME 
+            | NAME t_DOT funcname 
+            | NAME t_DOTDOT t_NAME ;
+						
+
+optelse	::= t_ELSE  block 						
+            | t_ELSEIF exp t_THEN  block optelse
+            | empty
+            ;	
+												
+optforexp ::= t_COMMA exp				
+            | empty ;
+
+varlist ::= var
+            | var t_COMMA varlist;
+					
+explist	::= exp
+            | exp t_COMMA explist;
+						
+optasmexplist ::= t_DOTDOTDOT explist
+                | empty;		
+						 		
+namelist ::= t_NAME 
+            | namelist t_COMMA t_NAME;
+					
+var ::= t_NAME
+        | prefixexp t_BRACKET_OPEN exp t_BRACKET_CLOSE	
+        | prefixexp t_DOT t_NAME;
+
+					
+exp ::= t_NIL
+        | t_FALSE
+        | t_TRUE
+        | t_NUMBER
+        | t_STRING 
+        | t_DOTDOTDOT 
+        | function
+        | prefixexp
+        | tableconstructor
+        | exp binop exp 
+        | unop exp;	
+	
+functioncall ::= prefixexp args
+                | prefixexp t_DOTDOT t_NAME args
+                ;
+				
+args ::= t_PARENTHESE_OPEN optexplist t_PARENTHESE_CLOSE
+        | tableconstructor
+        | t_NAME;
+
+funcbody ::= t_PARENTHESE_OPEN optparlist t_PARENTHESE_CLOSE  block  t_END;
+
+optparlist ::= parlist 
+              | empty 	;			
+
+parlist ::= namelist
+            | namelist t_COMMA t_DOTDOTDOT
+            | PARAMETROS;	
+	
+
+tableconstructor ::= t_BRACERS_OPEN fieldlist t_BRACERS_CLOSE
+                    | t_BRACERS_OPEN t_BRACERS_CLOSE; 
+ 						
+fieldlis ::= field
+            | field fieldsep fieldlist ;
+ 										
+field ::= t_BRACKET_OPEN exp t_BRACKET_CLOSE ATTRIBUTION exp
+        | t_NAME t_ATTRIBUTION exp
+        | exp ;
+						
+fieldsep ::= t_COMMA 
+            | t_SEMICOLON ;
+		
+binop ::= t_PLUS
+        | t_MINUS
+        | t_TIMES
+        | t_DEVIDED
+        | t_PERCENT
+        | t_EXP
+        | t_DOTDOT
+        | t_EQUAL
+        | t_LESS_EQUAL
+        | t_NOT_EQUAL
+        | t_LESS_THEN
+        | t_GREATER_THEN
+        | t_GREATER_EQUAL
+        | t_AND
+        | t_OR ;
+						
+unop ::= t_MINUS
+        | t_NOT
+        | t_HASHTAG ;
+														
+optsemi ::= t_SEMICOLON  | empty ;
+
+empty ::=  t_BLANK ;

@@ -58,5 +58,6 @@ public enum Tokens {
     t_AND,//and
     t_OR,//or 
     t_NOT,//not
-    t_HASHTAG//#
+    t_HASHTAG,//#
+    t_BLANK //Espaço em branco
 }

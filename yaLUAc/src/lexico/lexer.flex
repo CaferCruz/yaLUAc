@@ -82,6 +82,7 @@ string = ["][A-Za-z0-9]*["]
  ("OR")       { return t_OR; }
  ("NOT")      { return t_NOT; }
  ("#")        { return t_HASHTAG; }
+ (" ")        { return t_BLANK; }
 
 
  {WhiteSpace}       { /* pula, não faz nada */ }   
