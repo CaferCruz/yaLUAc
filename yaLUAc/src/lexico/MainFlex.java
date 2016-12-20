@@ -7,6 +7,7 @@ package lexico;
 
 import java.io.File;
 
+
 /**
  *
  * @author Cafer&Carrara
@@ -25,6 +26,6 @@ public class MainFlex {
 
     private static void generateLexer(String path) {
            File file = new File(path);
-           jflex.Main.generate(file);
+           jFlex.Main.generate(file);
     }
 }
