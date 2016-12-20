@@ -20,6 +20,7 @@ public enum Tokens {
     t_IF,//if
     t_THEN,//then
     t_ELSEIF,//elseif
+    t_ELSE,//else
     t_FOR,//for
     t_IN,//in
     t_FUNCTION, //function

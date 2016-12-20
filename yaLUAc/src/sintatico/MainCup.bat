@@ -1,0 +1,1 @@
+java -jar java-cup-11a.jar -parser Parser -package sintatico parse.cup

@@ -4,8 +4,10 @@ import static lexico.Tokens.*;
 //secao do usuario, nao coloquei nada
 %%
 
+//Adição de comunicação com o cup
+%cup
 //nome da classe
-%class Lexer
+%class Yylex
 //formato do scanner
 %unicode
 //ativa contagem de linhas
@@ -13,7 +15,7 @@ import static lexico.Tokens.*;
 //ativa contaagem de colunas
 %column
 //Para retornar 0 tipo Tokens criados.
-%type Tokens
+//%type Tokens
 //coloca em modo de debug que permite usar de forma isolada para testes
 
 %debug
@@ -33,56 +35,57 @@ string = ["][A-Za-z0-9]*["]
 //regras
 <YYINITIAL> {
 
- ";"          { return t_SEMICOLON; }
- "="          { return t_ATTRIBUTION; }
- ("END")      { return t_END; }
- ("DO")       { return t_DO; }
- ("WHILE")    { return t_WHILE; }
- ("REPEAT")   { return t_REPEAT; }
- ("UNTIL")    { return t_UNTIL; }
- ("IF")       { return t_IF; }
- ("THEN")     { return t_THEN; }
- ("ELSEIF")   { return t_ELSEIF; }
- ("FOR")      { return t_FOR; }
- ("IN")       { return t_IN; }
- ("FUNCTION") { return t_FUNCTION; }
- ("LOCAL")    { return t_LOCAL; }
- ("RETURN")   { return t_RETURN; }
- ("BREAK")    { return t_BREAK; }
- "."          { return t_DOT; }
- ":"          { return t_COLON; }
- ","          { return t_COMMA; }
- "["          { return t_BRACKET_OPEN; }
- "]"          { return t_BRACKET_CLOSE; }
- "NIL"        { return t_NIL; }
- "TRUE"       { return t_TRUE; }
- "FALSE"      { return t_FALSE; }
- {number}     { return t_NUMBER; }
- {string}     { return t_STRING; }
- {name}       { return t_NAME; }
- "("          { return t_PARENTHESE_OPEN; }
- ")"          { return t_PARENTHESE_CLOSE; }
- "["          { return t_BRACERS_OPEN; }
- "]"          { return t_BRACERS_CLOSE; }
- "..."        { return t_DOTDOTDOT; }
- ("+")        { return t_PLUS; }
- ("-")        { return t_MINUS; }
- ("*")        { return t_TIMES; }
- ("/")        { return t_DEVIDED; }
- ("^")        { return t_EXP; }
- ("%")        { return t_PERCENT; }
- ("..")       { return t_DOTDOT; }
- ("<")        { return t_LESS_THEN; }
- ("<=")       { return t_LESS_EQUAL; }
- (">")        { return t_GREATER_THEN; }
- (">=")       { return t_GREATER_EQUAL; }
- ("==")       { return t_EQUAL; }
- ("~=")       { return t_NOT_EQUAL; }
- ("AND")      { return t_AND; }
- ("OR")       { return t_OR; }
- ("NOT")      { return t_NOT; }
- ("#")        { return t_HASHTAG; }
- (" ")        { return t_BLANK; }
+ ";"          { return new Symbol ( sym.t_SEMICOLON, yychar, yyline, yytext()); }
+ "="          { return new Symbol ( sym.t_ATTRIBUTION, yychar, yyline, yytext()); }
+ ("END")      { return new Symbol ( sym.t_END, yychar, yyline, yytext()); }
+ ("DO")       { return new Symbol ( sym.t_DO, yychar, yyline, yytext()); }
+ ("WHILE")    { return new Symbol ( sym.t_WHILE, yychar, yyline, yytext()); }
+ ("REPEAT")   { return new Symbol ( sym.t_REPEAT, yychar, yyline, yytext()); }
+ ("UNTIL")    { return new Symbol ( sym.t_UNTIL, yychar, yyline, yytext()); }
+ ("IF")       { return new Symbol ( sym.t_IF, yychar, yyline, yytext()); }
+ ("THEN")     { return new Symbol ( sym.t_THEN, yychar, yyline, yytext()); }
+ ("ELSEIF")   { return new Symbol ( sym.t_ELSEIF, yychar, yyline, yytext()); }
+ ("ELSE")     { return new Symbol ( sym.t_ELSE, yychar, yyline, yytext()); }
+ ("FOR")      { return new Symbol ( sym.t_FOR, yychar, yyline, yytext()); }
+ ("IN")       { return new Symbol ( sym.t_IN, yychar, yyline, yytext()); }
+ ("FUNCTION") { return new Symbol ( sym.t_FUNCTION, yychar, yyline, yytext()); }
+ ("LOCAL")    { return new Symbol ( sym.t_LOCAL, yychar, yyline, yytext()); }
+ ("RETURN")   { return new Symbol ( sym.t_RETURN, yychar, yyline, yytext()); }
+ ("BREAK")    { return new Symbol ( sym.t_BREAK, yychar, yyline, yytext()); }
+ "."          { return new Symbol ( sym.t_DOT, yychar, yyline, yytext()); }
+ ":"          { return new Symbol ( sym.t_COLON, yychar, yyline, yytext()); }
+ ","          { return new Symbol ( sym.t_COMMA, yychar, yyline, yytext()); }
+ "["          { return new Symbol ( sym.t_BRACKET_OPEN, yychar, yyline, yytext()); }
+ "]"          { return new Symbol ( sym.t_BRACKET_CLOSE, yychar, yyline, yytext()); }
+ "NIL"        { return new Symbol ( sym.t_NIL, yychar, yyline, yytext()); }
+ "TRUE"       { return new Symbol ( sym.t_TRUE, yychar, yyline, yytext()); }
+ "FALSE"      { return new Symbol ( sym.t_FALSE, yychar, yyline, yytext()); }
+ {number}     { return new Symbol ( sym.t_NUMBER, yychar, yyline, new Integer (yytext())); }
+ {string}     { return new Symbol ( sym.t_STRING, yychar, yyline, yytext()); }
+ {name}       { return new Symbol ( sym.t_NAME, yychar, yyline, yytext()); }
+ "("          { return new Symbol ( sym.t_PARENTHESE_OPEN, yychar, yyline, yytext()); }
+ ")"          { return new Symbol ( sym.t_PARENTHESE_CLOSE, yychar, yyline, yytext()); }
+ "["          { return new Symbol ( sym.t_BRACERS_OPEN, yychar, yyline, yytext()); }
+ "]"          { return new Symbol ( sym.t_BRACERS_CLOSE, yychar, yyline, yytext()); }
+ "..."        { return new Symbol ( sym.t_DOTDOTDOT, yychar, yyline, yytext()); }
+ ("+")        { return new Symbol ( sym.t_PLUS, yychar, yyline, yytext()); }
+ ("-")        { return new Symbol ( sym.t_MINUS, yychar, yyline, yytext()); }
+ ("*")        { return new Symbol ( sym.t_TIMES, yychar, yyline, yytext()); }
+ ("/")        { return new Symbol ( sym.t_DEVIDED, yychar, yyline, yytext()); }
+ ("^")        { return new Symbol ( sym.t_EXP, yychar, yyline, yytext()); }
+ ("%")        { return new Symbol ( sym.t_PERCENT, yychar, yyline, yytext()); }
+ ("..")       { return new Symbol ( sym.t_DOTDOT, yychar, yyline, yytext()); }
+ ("<")        { return new Symbol ( sym.t_LESS_THEN, yychar, yyline, yytext()); }
+ ("<=")       { return new Symbol ( sym.t_LESS_EQUAL, yychar, yyline, yytext()); }
+ (">")        { return new Symbol ( sym.t_GREATER_THEN, yychar, yyline, yytext()); }
+ (">=")       { return new Symbol ( sym.t_GREATER_EQUAL, yychar, yyline, yytext()); }
+ ("==")       { return new Symbol ( sym.t_EQUAL, yychar, yyline, yytext()); }
+ ("~=")       { return new Symbol ( sym.t_NOT_EQUAL, yychar, yyline, yytext()); }
+ ("AND")      { return new Symbol ( sym.t_AND, yychar, yyline, yytext()); }
+ ("OR")       { return new Symbol ( sym.t_OR, yychar, yyline, yytext()); }
+ ("NOT")      { return new Symbol ( sym.t_NOT, yychar, yyline, yytext()); }
+ ("#")        { return new Symbol ( sym.t_HASHTAG, yychar, yyline, yytext()); }
+ (" ")        { return new Symbol ( sym.t_BLANK, yychar, yyline, yytext()); }
 
 
  {WhiteSpace}       { /* pula, não faz nada */ }   

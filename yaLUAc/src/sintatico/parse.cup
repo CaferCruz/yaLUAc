@@ -111,7 +111,7 @@ precedence left t_AND;
 precedence left t_LESS_THEN, t_GREATER_THEN, t_LESS_EQUAL, t_GREATER_EQUAL,t_NOT_EQUAL, t_EQUAL;
 precedence left t_DOTDOT;
 precedence left t_PLUS, t_MINUS;
-precedence left t_TIMES, t_DEVIDED;
+precedence left t_TIMES, t_DEVIDED, t_PERCENT;
 precedence left t_NOT;
 precedence left t_EXP;
 
