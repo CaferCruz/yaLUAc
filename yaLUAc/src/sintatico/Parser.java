@@ -6,7 +6,6 @@ package sintatico;
 
 import java_cup.runtime.*;
 import lexico.Yylex;
-import java.io.FileInputStream;
 import java.io.FileReader;
 
 /**
