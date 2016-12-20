@@ -151,7 +151,7 @@ function ::= t_FUNCTION funcbody;
 
 funcname ::= t_NAME 
             | t_NAME t_DOT funcname 
-            | t_NAME t_DOTDOT t_NAME ;
+            | t_NAME t_COLON t_NAME ;
 						
 
 optelse	::= t_ELSE  block 						
@@ -192,7 +192,7 @@ exp ::= t_NIL
         | unop exp;	
 	
 functioncall ::= prefixexp args
-                | prefixexp t_DOTDOT t_NAME args
+                | prefixexp t_COLON t_NAME args
                 ;
 				
 args ::= t_PARENTHESE_OPEN optexplist t_PARENTHESE_CLOSE
