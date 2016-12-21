@@ -7,14 +7,15 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+class BinOpFolha {
+    Folha binop;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public BinOpFolha(Folha binop) {
+        this.binop = binop;
     }
+    
     
     
 }

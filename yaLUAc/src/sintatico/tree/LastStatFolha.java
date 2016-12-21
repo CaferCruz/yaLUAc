@@ -7,14 +7,15 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class LastStatFolha {
+    Folha t_BREAK;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public LastStatFolha(Folha t_BREAK) {
+        this.t_BREAK = t_BREAK;
     }
+    
     
     
 }

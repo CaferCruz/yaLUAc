@@ -5,16 +5,14 @@
  */
 package sintatico.tree;
 
+import lexico.Tokens;
+
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+abstract class StatList {
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
-    }
     
-    
+
 }

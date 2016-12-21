@@ -7,14 +7,17 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class OptElse1 extends OptElse{
+    Folha t_ELSE;
+    Block block;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public OptElse1(Folha t_ELSE, Block block) {
+        this.t_ELSE = t_ELSE;
+        this.block = block;
     }
+    
     
     
 }

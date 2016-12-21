@@ -7,13 +7,13 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class Block3 {
+    LastStat lastStat;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public Block3(LastStat lastStat) {
+        this.lastStat = lastStat;
     }
     
     

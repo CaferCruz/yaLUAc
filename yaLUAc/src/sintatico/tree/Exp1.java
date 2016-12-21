@@ -7,13 +7,13 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class Exp1 extends Exp{
+    Function function;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public Exp1(Function function) {
+        this.function = function;
     }
     
     

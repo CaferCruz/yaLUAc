@@ -10,25 +10,21 @@ package sintatico.tree;
  * @author Carrara
  */
 public class Block1 extends Block{
- LastStat right;
- StatList left;
+ LastStat lastStat;
+ StatList statList;
 
     public Block1(LastStat right, StatList left) {
-        this.right = right;
-        this.left = left;
+        this.lastStat = right;
+        this.statList = left;
     }
 
-    public LastStat getRight() {
-        return right;
+    public LastStat getLastStat() {
+        return lastStat;
     }
 
-    public StatList getLeft() {
-        return left;
+    public StatList getStatList() {
+        return statList;
     }
 
-    private static class StatList {
-
-        public StatList() {
-        }
-    }
+    
 }

@@ -7,13 +7,13 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class VarList1 extends VarList{
+    Var var;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public VarList1(Var var) {
+        this.var = var;
     }
     
     

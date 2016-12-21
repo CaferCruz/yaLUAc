@@ -9,10 +9,18 @@ package sintatico.tree;
  *
  * @author Carrara
  */
-public abstract class LastStat {
+public class Stat3 extends Stat{
+    Folha t_DO;
+    Block block;
+    Folha t_END;
 
+    public Stat3(Folha t_DO, Block block, Folha t_END) {
+        this.t_DO = t_DO;
+        this.block = block;
+        this.t_END = t_END;
+    }
     
     
     
-
+    
 }

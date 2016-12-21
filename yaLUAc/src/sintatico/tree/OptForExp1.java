@@ -7,14 +7,15 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class OptForExp1 extends OptForExp {
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    Folha t_COMMA;
+    Exp exp;
+
+    public OptForExp1(Folha t_COMMA, Exp exp) {
+        this.t_COMMA = t_COMMA;
+        this.exp = exp;
     }
-    
-    
 }

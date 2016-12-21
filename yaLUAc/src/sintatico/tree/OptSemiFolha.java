@@ -5,20 +5,17 @@
  */
 package sintatico.tree;
 
-import lexico.Tokens;
-
 /**
  *
  * @author cafer
  */
 public class OptSemiFolha {
-    Folha folha;
-    
-    OptSemiFolha(Folha folha){
-        this.folha = folha;
-        this.folha.token = Tokens.t_SEMICOLON;
-        this.folha.dado = ";";
+    Folha t_SEMICOLON;
+
+    public OptSemiFolha(Folha t_SEMICOLON) {
+        this.t_SEMICOLON = t_SEMICOLON;
     }
+    
     
     
 }

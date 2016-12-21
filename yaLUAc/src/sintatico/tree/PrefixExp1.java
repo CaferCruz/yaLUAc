@@ -7,14 +7,15 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class PrefixExp1 extends PrefixExp{
+    Var var;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public PrefixExp1(Var var) {
+        this.var = var;
     }
+    
     
     
 }

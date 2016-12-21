@@ -7,13 +7,13 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class Exp2 extends Exp{
+    PrefixExp prefixExp;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public Exp2(PrefixExp prefixExp) {
+        this.prefixExp = prefixExp;
     }
     
     

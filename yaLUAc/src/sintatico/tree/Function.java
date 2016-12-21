@@ -7,14 +7,17 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class Function {
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    Folha t_FUNCTION;
+    FuncBody funcbody;
+
+    public Function(Folha t_FUNCTION, FuncBody funcbody) {
+        this.t_FUNCTION = t_FUNCTION;
+        this.funcbody = funcbody;
     }
-    
+
     
 }

@@ -7,12 +7,12 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
+public class OptAsmExpList2 extends OptAsmExpList{
     EmptyFolha empty;
 
-    public OptSemi1(EmptyFolha empty) {
+    public OptAsmExpList2(EmptyFolha empty) {
         this.empty = empty;
     }
     

@@ -7,14 +7,14 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class NameList1 extends NameList {
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    Folha t_NAME;
+
+    public NameList1(Folha t_NAME) {
+        this.t_NAME = t_NAME;
     }
-    
-    
+
 }

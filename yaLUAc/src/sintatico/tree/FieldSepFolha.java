@@ -7,14 +7,15 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+ public class FieldSepFolha {
+    Folha tokenValue;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public FieldSepFolha(Folha tokenValue) {
+        this.tokenValue = tokenValue;
     }
+    
     
     
 }

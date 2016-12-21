@@ -7,14 +7,16 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class EmptyFolha {
+public class FunctionCall1 extends FunctionCall {
 
-    Folha t_BLANK;
+    PrefixExp prefixexp;
+    Args args;
 
-    public EmptyFolha(Folha t_BLANK) {
-        this.t_BLANK = t_BLANK;
+    public FunctionCall1(PrefixExp prefixexp, Args args) {
+        this.prefixexp = prefixexp;
+        this.args = args;
     }
 
 }

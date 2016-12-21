@@ -7,13 +7,13 @@ package sintatico.tree;
 
 /**
  *
- * @author cafer
+ * @author Carrara
  */
-public class OptSemi1 {
-    EmptyFolha empty;
+public class ParList1 {
+    NameList namelist;
 
-    public OptSemi1(EmptyFolha empty) {
-        this.empty = empty;
+    public ParList1(NameList namelist) {
+        this.namelist = namelist;
     }
     
     
