@@ -26,6 +26,6 @@ public class MainFlex {
 
     private static void generateLexer(String path) {
            File file = new File(path);
-           jFlex.Main.generate(file);
+           jflex.Main.generate(file);
     }
 }
