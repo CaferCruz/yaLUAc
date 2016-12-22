@@ -9,15 +9,11 @@ package sintatico.tree;
  *
  * @author Carrara
  */
-public class NameList2 extends NameList {
+public class NameListFolha extends NameList {
 
-    NameList namelist;
-    Folha t_COMMA;
     Folha t_NAME;
 
-    public NameList2(NameList namelist, Folha t_COMMA, Folha t_NAME) {
-        this.namelist = namelist;
-        this.t_COMMA = t_COMMA;
+    public NameListFolha(Folha t_NAME) {
         this.t_NAME = t_NAME;
     }
 
