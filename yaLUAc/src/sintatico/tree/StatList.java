@@ -11,7 +11,7 @@ import lexico.Tokens;
  *
  * @author Carrara
  */
-abstract class StatList {
+public abstract class StatList {
 
     
 

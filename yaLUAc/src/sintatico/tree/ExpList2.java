@@ -13,4 +13,12 @@ public class ExpList2 extends ExpList{
     Exp exp;
     Folha t_COMMA;
     ExpList explist;
+
+    public ExpList2(Exp exp, Folha t_COMMA, ExpList explist) {
+        this.exp = exp;
+        this.t_COMMA = t_COMMA;
+        this.explist = explist;
+    }
+    
+    
 }

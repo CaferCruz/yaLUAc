@@ -14,7 +14,7 @@ public class Folha {
     Tokens token;
     String dado;
     
-    Folha(Tokens token, String dado) {
+    public Folha(Tokens token, String dado) {
         this.token = token;
         this.dado = dado;
     }

@@ -9,7 +9,7 @@ package sintatico.tree;
  *
  * @author Carrara
  */
-class BinOpFolha {
+public class BinOpFolha {
     Folha binop;
 
     public BinOpFolha(Folha binop) {
