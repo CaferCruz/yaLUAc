@@ -1,0 +1,3 @@
+Todas as dependências do projeto se encontram dentro do pacote.
+Para executar o projeto basta compilar e executar o comando:
+java  sintatico.Parser.Main [Diretório do arquivo]
