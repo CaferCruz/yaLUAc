@@ -1,3 +1,12 @@
-Todas as dependências do projeto se encontram dentro do pacote.
-Para executar o projeto basta compilar e executar o comando:
-java  sintatico.Parser.Main [Diretório do arquivo]
+all:
+	java -jar biblioteca/jflex-1.6.1.jar src/lexico/lexer.flex
+	java -jar biblioteca/java-cup-11a.jar -interface -parser Parser src/sintatico/Parser.cup
+
+compile:
+	javac -cp tools/java-cup-11a.jar *.java
+
+run:
+	java -cp tools/java-cup-11a.jar:. Main
+
+clean:
+	rm -rf *.class sym* Parser.java Scanner.java *~

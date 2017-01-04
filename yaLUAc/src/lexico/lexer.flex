@@ -1,5 +1,7 @@
 package lexico;
 import static lexico.Tokens.*; 
+import java_cup.runtime.Symbol;
+import sintatico.*;
 
 //secao do usuario, nao coloquei nada
 %%

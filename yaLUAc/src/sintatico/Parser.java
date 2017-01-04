@@ -6,6 +6,7 @@
 
 package sintatico;
 
+import java.io.File;
 import java_cup.runtime.*;
 import lexico.Yylex;
 import java.io.FileReader;
@@ -596,7 +597,12 @@ public class Parser extends java_cup.runtime.lr_parser {
 
     public static void main(String args[]) throws Exception{
         Parser parser = new Parser();
-        parser.setScanner(new Yylex(new FileReader(args[0])));
+        //parser.setScanner(new Yylex(new FileReader(args[0])));
+        
+        File f = new File("in.lua");
+        System.out.println(f.getAbsolutePath());
+        FileReader fr = new FileReader(f);
+        parser.setScanner(new Yylex(fr));
         parser.parse();
         //new parser(new Yylex(new FileInputStream(args[0]))).parser();
         //new parser(new Yylex(System.in)).parser();
@@ -1142,7 +1148,8 @@ class CUP$Parser$actions {
 		int fleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object f = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = new Exp1((Function)f); 
+                //System.out.println(f);
+		RESULT = new Exp1((Function)f); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
