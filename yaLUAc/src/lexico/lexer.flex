@@ -9,7 +9,7 @@ import sintatico.*;
 //Adição de comunicação com o cup
 %cup
 //nome da classe
-%class Yylex
+%public class Yylex
 //formato do scanner
 %unicode
 //ativa contagem de linhas

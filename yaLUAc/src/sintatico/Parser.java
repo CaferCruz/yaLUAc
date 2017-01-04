@@ -1148,7 +1148,7 @@ class CUP$Parser$actions {
 		int fleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object f = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-                //System.out.println(f);
+                System.out.println(f);
 		RESULT = new Exp1((Function)f); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
