@@ -1,5 +1,5 @@
 all:
-	java -jar biblioteca/jflex-1.6.1.jar src/lexico/lexer.flex
+	java -jar biblioteca/jflex-1.6.1.jar src/sintatico/lexer.flex
 	java -jar biblioteca/java-cup-11a.jar -interface -parser Parser src/sintatico/Parser.cup
 
 compile:

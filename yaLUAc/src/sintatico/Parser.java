@@ -8,9 +8,7 @@ package sintatico;
 
 import java.io.File;
 import java_cup.runtime.*;
-import lexico.Yylex;
 import java.io.FileReader;
-import lexico.Tokens;
 import sintatico.tree.*;
 
 /** CUP v0.11a beta 20060608 generated parser.

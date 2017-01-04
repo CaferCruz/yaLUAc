@@ -5,7 +5,7 @@
  */
 package sintatico.tree;
 
-import lexico.Tokens;
+import sintatico.Tokens;
 
 /**
  *

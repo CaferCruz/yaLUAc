@@ -1,7 +1,6 @@
-package lexico;
-import static lexico.Tokens.*; 
+package sintatico;
 import java_cup.runtime.Symbol;
-import sintatico.*;
+
 
 //secao do usuario, nao coloquei nada
 %%
@@ -9,7 +8,7 @@ import sintatico.*;
 //Adição de comunicação com o cup
 %cup
 //nome da classe
-%public class Yylex
+%class Yylex
 //formato do scanner
 %unicode
 //ativa contagem de linhas
