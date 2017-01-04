@@ -1,7 +1,7 @@
-FUNCTION fact (n)
+FUNCTION val (n)
     IF n == 0 THEN
-        RETURN 1
+        RETURN 1000
     ELSE
-        RETURN n * fact(n-1)
-    END
-END
+        RETURN 8000
+    END;
+END;

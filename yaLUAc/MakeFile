@@ -1,9 +1,9 @@
 all:
-	java -jar biblioteca/jflex-1.6.1.jar src/sintatico/lexer.flex
-	java -jar biblioteca/java-cup-11a.jar -interface -parser Parser src/sintatico/Parser.cup
+	java -jar biblioteca/jflex-1.6.1.jar src/lexer.flex
+	java -jar biblioteca/java-cup-11a.jar -parser Parser -destdir src src/parse.cup
 
 compile:
-	javac -cp tools/java-cup-11a.jar *.java
+	javac -cp biblioteca/java-cup-11a.jar src/sintatico/sym.java src/sintatico/Yylex.java src/sintatico/Parser.java
 
 run:
 	java -cp tools/java-cup-11a.jar:. Main

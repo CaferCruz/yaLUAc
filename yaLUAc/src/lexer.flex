@@ -1,4 +1,3 @@
-package sintatico;
 import java_cup.runtime.Symbol;
 
 
@@ -21,6 +20,10 @@ import java_cup.runtime.Symbol;
 
 %debug
 //macros sao escritas em expresoes regulares
+
+%eofval{
+  return new Symbol (sym.EOF);
+%eofval}
 
 LineTerminator = \r|\n|\r\n
 WhiteSpace     = {LineTerminator} | [ \t\f]
@@ -86,10 +89,12 @@ string = ["][A-Za-z0-9]*["]
  ("OR")       { return new Symbol ( sym.t_OR, yychar, yyline, yytext()); }
  ("NOT")      { return new Symbol ( sym.t_NOT, yychar, yyline, yytext()); }
  ("#")        { return new Symbol ( sym.t_HASHTAG, yychar, yyline, yytext()); }
- (" ")        { return new Symbol ( sym.t_BLANK, yychar, yyline, yytext()); }
+ (" ")        { }
 
 
  {WhiteSpace}       { /* pula, não faz nada */ }   
 }
+
+
 
 [^]      { throw new Error("Caracter inválido <"+yytext()+">"); }

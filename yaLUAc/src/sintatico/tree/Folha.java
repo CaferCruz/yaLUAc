@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package sintatico.tree;
-import sintatico.Tokens;
 
 /**
  *
@@ -17,5 +16,11 @@ public class Folha {
     public Folha(Tokens token, String dado) {
         this.token = token;
         this.dado = dado;
+    }
+
+    private static class Tokens {
+
+        public Tokens() {
+        }
     }
 }
